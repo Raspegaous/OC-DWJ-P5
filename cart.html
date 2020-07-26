@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>Orinoco</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/app.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#" id="api" data-api="teddies">Orinoco</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Accueil
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./cart.html">
+                        Panier
+                        <span class="badge badge-danger" id="cart"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<main class="container">
+
+    <section class="d-flex flex-column align-items-center">
+        <h1>
+            <img src="./images/logo.png" alt="Logo Orinoco" class="img-responsive logo">
+        </h1>
+
+        <div class="d-flex flex-wrap justify-content-center m-5" id="products">
+
+            <table class="table">
+                <thead class="table-info text-center">
+                <tr>
+                    <th colspan="3">Récapitulatif du panier</th>
+                </tr>
+                <tr class="d-flex align-items-center justify-content-between">
+                    <td colspan="2">Article(s)</td>
+                    <td>Prix</td>
+                </tr>
+                </thead>
+                <tbody id="cartTable">
+
+                </tbody>
+            </table>
+            <button class="btn btn-outline-success mr-5" id="getForm">Acheter</button>
+            <a role="button" href="./index.html" class="btn btn-outline-danger" id="reset">Annuler</a>
+        </div>
+
+        <form action="/order" method="post" id="form" class="form d-flex flex-column justify-content-center col-6 invisible">
+
+            <div class="form-group">
+                <label for="firstname" class="col-form-label">
+                    Prénom
+                </label>
+                    <input type="text" id="firstname" class="form-control" value="Jeremy">
+            </div>
+
+
+            <div class="form-group">
+                <label for="lastname" class="col-form-label">
+                    Nom
+                </label>
+                    <input type="text" id="lastname" class="form-control" value="Bonnet">
+            </div>
+
+
+            <div class="form-group">
+                <label for="address" class="col-form-label">
+                    Adresse
+                </label>
+                    <input type="text" id="address" class="form-control" value="1 impasse du stade">
+            </div>
+
+
+            <div class="form-group">
+                <label for="city" class="col-form-label">
+                    Ville
+                </label>
+                    <input type="text" id="city" class="form-control" value="Cap d'Ail">
+            </div>
+
+
+            <div class="form-group">
+                <label for="email" class="col-form-label">
+                    E-Mail
+                </label>
+                    <input type="email" id="email" class="form-control" value="bnt.jeremy@gmail.com">
+            </div>
+
+            <div class="d-flex flex-row justify-content-around mb-5">
+                <button class="btn btn-outline-success" type="submit">Valider</button>
+                <button class="btn btn-outline-danger" type="reset">Annuler</button>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Orinoco 2020</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>
+<script src="./js/index.js" type="module"></script>
+
+</body>
+
+</html>
