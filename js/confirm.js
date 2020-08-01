@@ -1,9 +1,10 @@
 const products = document.getElementById('products');
 const validation = JSON.parse(localStorage.getItem('orderValidation'));
+
 let firstName, lastName, orderId;
-console.log(validation);
+
+
 validation.forEach(v => {
-    console.log(v);
    firstName = v.contact.firstName;
    lastName = v.contact.lastName;
    orderId = v.orderId;
@@ -18,4 +19,4 @@ products.innerHTML += `
             </div>
 `;
 
-//localStorage.clear();
+localStorage.clear();
