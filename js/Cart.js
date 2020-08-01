@@ -26,8 +26,16 @@ export default class Cart {
             this.products.cart.push(p);
             localStorage.setItem('cart', JSON.stringify(this.products));
             this.viewCart.innerText = this.products.cart.length.toString();
-        }).catch(error => error);
-        // TODO: Gérer un affichage utilisateur
+        }).catch(error =>  {
+            const alert = document.getElementById('products');
+            alert.innerHTML = `
+                                <div class="alert alert-danger" role="alert">
+                                    <p>Une erreur est survenue : ${error}</p>
+                                    <p>Si le problème persiste, veuillez nous contacter</p>
+                                </div>
+                            `;
+            console.error(error)
+        });
         this.createDeleteButton(api, id);
     }
 

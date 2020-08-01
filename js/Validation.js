@@ -47,8 +47,16 @@ export default class Validation
                         .then(response => {
                             results.push(response);
                         })
-                        .catch(error => console.error(error));
-                    //TODO: Prévoir affichage utilisateur
+                        .catch(error =>  {
+                            const alert = document.getElementById('products');
+                            alert.innerHTML = `
+                                <div class="alert alert-danger" role="alert">
+                                    <p>Une erreur est survenue : ${error}</p>
+                                    <p>Si le problème persiste, veuillez nous contacter</p>
+                                </div>
+                            `;
+                            console.error(error)
+                        });
                 }
             });
             new Promise((resolve) => {
@@ -58,9 +66,8 @@ export default class Validation
                 localStorage.setItem('order', JSON.stringify(result));
                 // console.log(result);
                 // console.log(JSON.parse(localStorage.getItem('orderValidation')));
-                window.location.href = './confirmation.html';
-
-            });
+                //window.location.href = './confirmation.html';
+            }).catch(e => console.error(e));
         });
     }
 
@@ -89,20 +96,29 @@ export default class Validation
         return products;
     }
 
-    validate() {
+    validate(position, insertedElement) {
         const { firstname, lastname, address, city, email } = this.form;
+
 
         const regExText = /^[a-zA-Z ]+$/;
         const regExAddress = /^[a-zA-Z0-9\s,'-]*$/;
         const regExCity = /^[a-zA-Z]+(?:[\s,'-][a-zA-Z]+)*$/;
         const regExEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        if (!regExText.test(firstname.value.trim())) { firstname.classList.add('is-invalid'); return false; }
-        if (!regExText.test(lastname.value.trim())) { lastname.classList.add('is-invalid'); return false; }
-        if (!regExAddress.test(address.value.trim())) { address.classList.add('is-invalid'); return false; }
-        if (!regExCity.test(city.value.trim())) { city.classList.add('is-invalid'); return false; }
-        if (!regExEmail.test(email.value.trim())) { email.classList.add('is-invalid'); return false; }
+        if (!regExText.test(firstname.value.trim())) { this.isInvalid(firstname, "Prénom invalide"); return false; }
+        if (!regExText.test(lastname.value.trim())) { this.isInvalid(lastname, "Nom invalide"); return false; }
+        if (!regExAddress.test(address.value.trim())) { this.isInvalid(address, "Adresse invalide"); return false; }
+        if (!regExCity.test(city.value.trim())) { this.isInvalid(city, "Ville invalide"); return false; }
+        if (!regExEmail.test(email.value.trim())) { this.isInvalid(email, "Email invalide"); return false; }
 
         return true;
     }
+
+    isInvalid (element, text) {
+        const invalid = document.createElement('div');
+        element.classList.add('is-invalid');
+        invalid.classList.add('invalid-feedback');
+        invalid.innerText = text;
+        element.insertAdjacentElement('afterend', invalid);
+    };
 }

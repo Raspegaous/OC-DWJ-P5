@@ -70,7 +70,16 @@ export default class Product
             this.CART.listenDeleteProduct();
             this.CART.checkDeleteButton();
         })
-            .catch(error => console.error(error));
+            .catch(error =>  {
+                const alert = document.getElementById('products');
+                alert.innerHTML = `
+                                <div class="alert alert-danger" role="alert">
+                                    <p>Une erreur est survenue : ${error}</p>
+                                    <p>Si le problème persiste, veuillez nous contacter</p>
+                                </div>
+                            `;
+                console.error(error)
+            });
         // TODO: Gérer un affichage utilisateur
     }
 
