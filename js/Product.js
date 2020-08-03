@@ -79,6 +79,10 @@ export default class Product
      */
     createProduct ()
     {
+        if (window.location.pathname === '/product.html') {
+            const server = "http://localhost:3000/api/";
+            this.url = server + Product.getUrlParams('api') + '/' + Product.getUrlParams('id');
+        }
         this.getProduct().then( data => {
             // si `data` est un tableau il s'agit alors d'une liste de produit
             if (Array.isArray(data)) {

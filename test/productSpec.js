@@ -1,7 +1,6 @@
-Product = require('../js/Product.js');
-
-require('../js/Product.js');
+const Product = require('../js/Product.js');
 require('../js/Cart.js');
+require('../js/Validation.js');
 const assert = require('assert');
 
 describe('Product', function () {
