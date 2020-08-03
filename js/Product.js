@@ -79,7 +79,7 @@ export default class Product
      */
     createProduct ()
     {
-        if (window.location.pathname === '/product.html') {
+        if (window.location.pathname === '/product.html' || window.location.pathname === '/OC-DWJ-P5/product.html') {
             const server = "http://localhost:3000/api/";
             this.url = server + Product.getUrlParams('api') + '/' + Product.getUrlParams('id');
         }
