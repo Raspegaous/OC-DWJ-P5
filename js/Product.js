@@ -148,7 +148,7 @@ export default class Product
      */
     productList (product, one = false)
     {
-        // On crée un div
+        // On crée une div
         let div = document.createElement('div');
         // Code HTML pour un produit
         if (one) {
